@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import { useReducer, useRef } from 'react';
 import './App.css';
-
+import UseEffect from './UseEffect';
+import UseImperative from './UseImperative';
+import UseLayout from './UseLayout';
+import UseReducer from './UseReducer';
+import UseState1 from './UseState1';
+import UseState2 from './UseState2';
+import UseState3 from './UseState3';
 function App() {
+  const ButtonRef = useRef(null);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <UseState1 />
+      <UseState2 />
+      <UseState3 />
+      <UseReducer />
+      <UseEffect />
+      <UseLayout />
+      <h1>Using useImperativeHandle </h1>
+      <button
+        onClick={() => {
+          ButtonRef.current.alterToggle();
+        }}
+      >
+        Button from Parent
+      </button>
+      <UseImperative ref={ButtonRef} />
     </div>
   );
 }
